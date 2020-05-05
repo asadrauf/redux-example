@@ -9,6 +9,7 @@ class PostForm extends Component {
            
         };
         this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onChange(e){
@@ -28,6 +29,8 @@ class PostForm extends Component {
                 },
                 body: JSON.stringify(post)
             })
+            .then(res => res.json())
+            .then(data => console.log(data))
         }
     
 
@@ -43,7 +46,8 @@ class PostForm extends Component {
                   <div>
                       <label>Body: </label><br/>
                       <input type="text" name="body" onChange={this.onChange} value={this.state.body}/>
-                  </div>
+                  </div><br />
+                  <button type="submit">Submit</button>
               </form>
             </div>
         );
